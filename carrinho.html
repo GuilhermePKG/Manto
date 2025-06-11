@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrinho de Compras</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    .header {
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #b30000;
+    }
+
+    .navbar .nav-list {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    .nav-list li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-list li a:hover {
+      color: #b30000;
+    }
+
+    .icons {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .icon-link {
+      text-decoration: none;
+    }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    .contador-carrinho {
+      background: #b30000;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 0.8rem;
+      position: relative;
+      top: -10px;
+      right: 10px;
+    }
+
+    .carrinho-container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: #000000;
+    }
+
+    .item-carrinho {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e0e0e0;
+      position: relative;
+    }
+
+    .item-carrinho img {
+      width: 100px;
+      height: auto;
+      margin-right: 20px;
+      border-radius: 8px;
+    }
+
+    .produto-info {
+      flex: 1;
+    }
+
+    .produto-info h3 {
+      margin-bottom: 5px;
+      color: #000000;
+    }
+
+    .produto-info p {
+      margin: 3px 0;
+      font-size: 0.95rem;
+      color: #000000;
+    }
+
+    .preco {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #000000;
+    }
+
+    .btn-remover {
+      background-color: transparent;
+      color: #e60000;
+      border: 1px solid #e60000;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.85rem;
+    }
+
+    .btn-remover:hover {
+      background-color: #e60000;
+      color: white;
+    }
+
+    .resumo {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #000000;
+    }
+
+    .btn-finalizar {
+      width: 100%;
+      padding: 14px;
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      margin-top: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-finalizar:hover {
+      background-color: #990000;
+    }
+
+    .metodo-pagamento {
+      margin-top: 25px;
+    }
+
+    .metodo-pagamento label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    #dados-cartao {
+      display: none;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    @media screen and (max-width: 600px) {
+      .item-carrinho {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .item-carrinho img {
+        margin-bottom: 10px;
+      }
+
+      .resumo {
+        text-align: left;
+      }
+
+      .navbar .nav-list {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="header">
+    <div class="logo">MANTO</div>
+    <nav class="navbar">
+      <ul class="nav-list">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="index.html#produtos">Destaques</a></li>
+        <li><a href="index.html#shop">Lançamentos</a></li>
+        <li><a href="index.html#Promoção">Promoções</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <a href="cadastro.html" class="icon-link" title="Conta">👤</a>
+      <a href="carrinho.html" class="icon-link" title="Carrinho">🛒<span class="contador-carrinho" id="contadorCarrinho">0</span></a>
+    </div>
+  </header>
+
+  <!-- CARRINHO -->
+  <div class="carrinho-container">
+    <h1>Seu Carrinho</h1>
+    <div id="itens-carrinho"></div>
+    <div class="resumo" id="totalCarrinho">Total: R$ 0,00</div>
+
+    <div class="metodo-pagamento">
+      <h2>Selecione o Método de Pagamento</h2>
+      <label>
+        <input type="radio" name="pagamento" value="cartao" checked> Cartão de Crédito
+      </label>
+      <label>
+        <input type="radio" name="pagamento" value="pix"> Pix
+      </label>
+      <label>
+        <input type="radio" name="pagamento" value="boleto"> Boleto
+      </label>
+
+      <div id="dados-cartao" style="margin-top: 20px;">
+        <input type="text" placeholder="Número do Cartão" id="numCartao">
+        <input type="text" placeholder="Nome no Cartão" id="nomeCartao">
+        <input type="text" placeholder="Validade (MM/AA)" id="validadeCartao">
+        <input type="text" placeholder="CVV" id="cvvCartao">
+      </div>
+    </div>
+
+    <button class="btn-finalizar" id="finalizarCompra">Finalizar Compra</button>
+  </div>
+
+  <script>
+    let itensCarrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    const container = document.getElementById('itens-carrinho');
+    const totalEl = document.getElementById('totalCarrinho');
+    const contadorCarrinho = document.getElementById('contadorCarrinho');
+
+    function atualizarCarrinho() {
+      container.innerHTML = "";
+      let total = 0;
+
+      if (itensCarrinho.length === 0) {
+        container.innerHTML = "<p>Seu carrinho está vazio.</p>";
+        document.getElementById('finalizarCompra').style.display = 'none';
+        totalEl.style.display = 'none';
+        contadorCarrinho.textContent = "0";
+        return;
+      }
+
+      itensCarrinho.forEach((produto, index) => {
+        const precoNumerico = parseFloat(produto.preco.replace("R$", "").replace(",", "."));
+        total += precoNumerico;
+
+        const div = document.createElement('div');
+        div.classList.add('item-carrinho');
+        div.innerHTML = `
+          <img src="${produto.imagem}" alt="${produto.nome}">
+          <div class="produto-info">
+            <h3>${produto.nome}</h3>
+            <p><strong>Tamanho:</strong> ${produto.tamanho}</p>
+            <p class="preco">${produto.preco}</p>
+          </div>
+          <button class="btn-remover" onclick="removerItem(${index})">Remover</button>
+        `;
+        container.appendChild(div);
+      });
+
+      totalEl.textContent = `Total: R$ ${total.toFixed(2).replace(".", ",")}`;
+      contadorCarrinho.textContent = itensCarrinho.length;
+    }
+
+    function removerItem(index) {
+      itensCarrinho.splice(index, 1);
+      localStorage.setItem('carrinho', JSON.stringify(itensCarrinho));
+      atualizarCarrinho();
+    }
+
+    document.querySelectorAll('input[name="pagamento"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        const dadosCartao = document.getElementById('dados-cartao');
+        dadosCartao.style.display = (radio.value === "cartao") ? 'block' : 'none';
+      });
+    });
+
+    document.getElementById('finalizarCompra').addEventListener('click', () => {
+      const metodo = document.querySelector('input[name="pagamento"]:checked').value;
+
+      if (metodo === "cartao") {
+        const num = document.getElementById('numCartao').value.trim();
+        const nome = document.getElementById('nomeCartao').value.trim();
+        const validade = document.getElementById('validadeCartao').value.trim();
+        const cvv = document.getElementById('cvvCartao').value.trim();
+
+        if (!num || !nome || !validade || !cvv) {
+          alert("Por favor, preencha todos os dados do cartão.");
+          return;
+        }
+      }
+
+      alert(`Compra finalizada com sucesso via ${metodo.toUpperCase()}!`);
+      localStorage.removeItem('carrinho');
+      location.reload();
+    });
+
+    atualizarCarrinho();
+  </script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+/* Importando fonte parecida com a da Centauro */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+:root {
+  --vermelho: #d71920;
+  --cinza-claro: #f5f5f5;
+  --cinza-medio: #ccc;
+  --cinza-escuro: #333;
+  --preto: #000;
+  --branco: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--cinza-claro);
+  color: var(--cinza-escuro);
+}
+
+/* Header */
+.header {
+  background-color: var(--branco);
+  border-bottom: 1px solid var(--cinza-medio);
+  padding: 1rem 0;
+}
+
+.header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--vermelho);
+  letter-spacing: 1px;
+}
+
+.navbar .nav-list {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.navbar .nav-list a {
+  text-decoration: none;
+  color: var(--cinza-escuro);
+  font-weight: 600;
+  transition: color 0.2s ease-in-out;
+}
+
+.navbar .nav-list a:hover {
+  color: var(--vermelho);
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .icons a.icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    transition: transform 0.2s;
+  }
+  
+  .icons a.icon:hover svg {
+    stroke: var(--vermelho);
+    transform: scale(1.1);
+  }
+  
+  .icons svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+
+/* Banner principal */
+.hero-banner {
+
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--preto);
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+  background-color: var(--vermelho);
+  color: var(--branco);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #b7171e;
+}
+
+/* Produtos */
+.produtos {
+  padding: 4rem 1.5rem;
+  background-color: var(--cinza-claro);
+}
+
+.produtos h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--cinza-escuro);
+}
+
+.grid-produtos {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.card-produto {
+  background-color: var(--branco);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.card-produto:hover {
+  transform: translateY(-5px);
+}
+
+.card-produto img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.card-produto h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.preco {
+  color: var(--vermelho);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.btn-adicionar {
+  background-color: var(--vermelho);
+  color: var(--branco);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-adicionar:hover {
+  background-color: #b7171e;
+}
+
+/* Rodapé */
+.footer {
+  background-color: var(--preto);
+  color: var(--branco);
+  padding: 3rem 1.5rem;
+}
+
+.footer .container {
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-info {
+  flex: 1 1 300px;
+  margin-bottom: 2rem;
+}
+
+.logo-footer {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--vermelho);
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 3rem;
+  flex: 2;
+  flex-wrap: wrap;
+}
+
+.footer-links div h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: var(--branco);
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links ul li a {
+  text-decoration: none;
+  color: var(--cinza-claro);
+  transition: color 0.2s ease;
+}
+
+.footer-links ul li a:hover {
+  color: var(--vermelho);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .header .container,
+  .footer .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .navbar .nav-list {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .icons {
+    margin-top: 1rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+.contador-carrinho {
+    position: absolute;
+    top: -1px; /* Ajuste a posição vertical */
+    right: right; /* Ajuste a posição horizontal */
+    background-color: var(--vermelho);
+    color: var(--branco);
+    font-size: 0.75rem; /* Ajuste o tamanho da fonte */
+    font-weight: 700;
+    border-radius: 50%;
+    padding: 3px 6px; /* Ajuste o tamanho do contador */
+    min-width: 18px; /* Defina o tamanho mínimo */
+    height: 20px; /* Defina o tamanho fixo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 5px;
+    box-shadow: 0 0 0 2px var(--branco); /* Caixa ao redor */
+  }
+  
+  /* Exemplo de ajuste para a posição inferior esquerda (exemplo de outra posição) */
+  .contador-carrinho-inferior {
+    top: auto; /* Remover o ajuste de top */
+    bottom: -6px; /* Ajusta a posição na parte inferior */
+    left: -6px
+; /* Ajuste a posição horizontal */
+  }
+  
+  /* Ajuste do ícone do carrinho */
+  .icone-carrinho {
+    position: relative; /* Faz o contador ser posicionado em relação ao ícone */
+  }
+  
+  .carrossel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 400px;
+  }
+  
+  .slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+  }
+  
+  .slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    display: none;
+  }
+  
+  .slide.active {
+    display: block;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .slide-texto {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  }
+  
+  .slide-texto h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .slide-texto p {
+    font-size: 1.2rem;
+  }
+  
+  .btn-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .btn-nav.anterior {
+    left: 10px;
+  }
+  
+  .btn-nav.proximo {
+    right: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .slide-texto h2 {
+      font-size: 1.5rem;
+    }
+    .slide-texto p {
+      font-size: 1rem;
+    }
+  }
+  /* === TAMANHOS DAS CAMISAS === */
+.tamanhos {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    flex-wrap: wrap;
+  }
+  
+  .tamanho {
+    padding: 0.4rem 0.8rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    user-select: none;
+  }
+  
+  .tamanho:hover {
+    border-color: var(--vermelho);
+    color: var(--vermelho);
+  }
+  
+  .tamanho.selecionado {
+    background-color: var(--vermelho);
+    color: white;
+    border-color: var(--vermelho);
+  }
+  
